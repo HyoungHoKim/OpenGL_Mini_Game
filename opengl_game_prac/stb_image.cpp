@@ -5,4 +5,5 @@
 //  Created by hyoukim on 2021/07/09.
 //
 
-#include <stdio.h>
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
