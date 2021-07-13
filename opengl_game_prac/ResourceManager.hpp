@@ -27,11 +27,11 @@ public:
     // loads (and generates) a shader program from file loading vertex, fragment (and geometry) shader's source code.
     static Shader                   LoadShader(const char *vShaderFile, const char *fShaderFile, const char *gShaderFile, string name);
     // retrieves a stored shader
-    static Shader                   GetShader(string name);
+    static Shader                   &GetShader(string name);
     // loads (and generates) a texture from file
     static Texture2D                LoadTexture(const char *file, bool alpha, string name);
     // retrieves a stored texture
-    static Texture2D                GetTexture(string name);
+    static Texture2D                &GetTexture(string name);
     // properly de-allocates all loaded resources
     static void                     Clear();
 private:

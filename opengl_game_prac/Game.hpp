@@ -11,19 +11,48 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include "GameLevel.hpp"
+#include "GameObject.hpp"
+
+// Represents the current state of the game
 enum GameState {
     GAME_ACTIVE,
     GAME_MENU,
     GAME_WIN
 };
 
+// Represents the four possible (collision) direction
+enum Direction {
+    UP,
+    RIGHT,
+    DOWN,
+    LEFT
+};
+// Define a Collision typedef that represents collision data
+typedef tuple<bool, Direction, vec2> Collision;
+
+// Initial size of the player paddle
+const vec2 PLAYER_SIZE(100.0f, 20.0f);
+// Initial velocity of the player paddle
+const float PLAYER_VELOCITY(500.0f);
+// Initial velocity of the Ball
+const glm::vec2 INITIAL_BALL_VELOCITY(100.0f, -350.0f);
+// Radius of the ball object
+const float BALL_RADIUS = 12.5f;
+
+// Game holds all game-related state and functionality.
+// Combines all game-related data into a single class for
+// easy access to each of the components and manageability
 class Game
 {
 private:
-    GameState       state;
-    bool            keys[1024];
-    unsigned int    width;
-    unsigned int    height;
+    // game state
+    GameState           state;
+    bool                keys[1024];
+    unsigned int        width;
+    unsigned int        height;
+    vector<GameLevel>   levels;
+    unsigned int        level;
     
     Game();
 public:
@@ -43,6 +72,10 @@ public:
     void            processInput(float dt);
     void            update(float dt);
     void            render(void);
+    void            DoCollisions(void);
+    // reset
+    void            ResetLevel();
+    void            ResetPlayer();
 };
 
 #endif /* Game_hpp */

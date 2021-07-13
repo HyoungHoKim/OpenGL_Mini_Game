@@ -22,7 +22,7 @@ Shader  ResourceManager::LoadShader(const char *vShaderFile, const char *fShader
     return (Shaders[name]);
 }
 
-Shader  ResourceManager::GetShader(string name)
+Shader  &ResourceManager::GetShader(string name)
 {
     return (Shaders[name]);
 }
@@ -33,7 +33,7 @@ Texture2D   ResourceManager::LoadTexture(const char *file, bool alpha, string na
     return (Textures[name]);
 }
 
-Texture2D    ResourceManager::GetTexture(string name)
+Texture2D    &ResourceManager::GetTexture(string name)
 {
     return (Textures[name]);
 }

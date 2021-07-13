@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		85D58BC426997881008DFBD5 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85F24120269838A300B743F4 /* Shader.cpp */; };
 		85D58BC926998104008DFBD5 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 85D58BC8269980FE008DFBD5 /* glad.c */; };
+		85D58BCC269A97E2008DFBD5 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D58BCA269A97E2008DFBD5 /* GameObject.cpp */; };
+		85D58BD7269A9D38008DFBD5 /* GameLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D58BD5269A9D38008DFBD5 /* GameLevel.cpp */; };
+		85D58BE1269B0FB3008DFBD5 /* BallObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D58BDF269B0FB3008DFBD5 /* BallObject.cpp */; };
 		85F240F92696A4E500B743F4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85F240F82696A4E500B743F4 /* main.cpp */; };
 		85F241092696A6CD00B743F4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F241002696A50C00B743F4 /* OpenGL.framework */; };
 		85F2410A2696A6D500B743F4 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F241062696A5A200B743F4 /* libglfw.3.3.dylib */; };
@@ -49,6 +52,20 @@
 /* Begin PBXFileReference section */
 		85D58BC226996FC7008DFBD5 /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
 		85D58BC8269980FE008DFBD5 /* glad.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
+		85D58BCA269A97E2008DFBD5 /* GameObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
+		85D58BCB269A97E2008DFBD5 /* GameObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
+		85D58BD3269A9D09008DFBD5 /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
+		85D58BD4269A9D09008DFBD5 /* block_solid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_solid.png; sourceTree = "<group>"; };
+		85D58BD5269A9D38008DFBD5 /* GameLevel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameLevel.cpp; sourceTree = "<group>"; };
+		85D58BD6269A9D38008DFBD5 /* GameLevel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameLevel.hpp; sourceTree = "<group>"; };
+		85D58BD8269AAD02008DFBD5 /* paddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paddle.png; sourceTree = "<group>"; };
+		85D58BD9269AB2E3008DFBD5 /* background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpeg; sourceTree = "<group>"; };
+		85D58BDB269AB48A008DFBD5 /* one.lvl */ = {isa = PBXFileReference; lastKnownFileType = text; path = one.lvl; sourceTree = "<group>"; };
+		85D58BDC269AB4CA008DFBD5 /* two.lvl */ = {isa = PBXFileReference; lastKnownFileType = text; path = two.lvl; sourceTree = "<group>"; };
+		85D58BDD269AB50F008DFBD5 /* three.lvl */ = {isa = PBXFileReference; lastKnownFileType = text; path = three.lvl; sourceTree = "<group>"; };
+		85D58BDE269AB531008DFBD5 /* four.lvl */ = {isa = PBXFileReference; lastKnownFileType = text; path = four.lvl; sourceTree = "<group>"; };
+		85D58BDF269B0FB3008DFBD5 /* BallObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BallObject.cpp; sourceTree = "<group>"; };
+		85D58BE0269B0FB3008DFBD5 /* BallObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BallObject.hpp; sourceTree = "<group>"; };
 		85F240F52696A4E500B743F4 /* opengl_game_prac */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = opengl_game_prac; sourceTree = BUILT_PRODUCTS_DIR; };
 		85F240F82696A4E500B743F4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		85F241002696A50C00B743F4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -87,9 +104,24 @@
 		85D58BC326996FDC008DFBD5 /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				85D58BD9269AB2E3008DFBD5 /* background.jpeg */,
+				85D58BD8269AAD02008DFBD5 /* paddle.png */,
+				85D58BD4269A9D09008DFBD5 /* block_solid.png */,
+				85D58BD3269A9D09008DFBD5 /* block.png */,
 				85D58BC226996FC7008DFBD5 /* awesomeface.png */,
 			);
 			path = Textures;
+			sourceTree = "<group>";
+		};
+		85D58BDA269AB3CC008DFBD5 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				85D58BDB269AB48A008DFBD5 /* one.lvl */,
+				85D58BDC269AB4CA008DFBD5 /* two.lvl */,
+				85D58BDD269AB50F008DFBD5 /* three.lvl */,
+				85D58BDE269AB531008DFBD5 /* four.lvl */,
+			);
+			path = Levels;
 			sourceTree = "<group>";
 		};
 		85F240EC2696A4E500B743F4 = {
@@ -112,6 +144,7 @@
 		85F240F72696A4E500B743F4 /* opengl_game_prac */ = {
 			isa = PBXGroup;
 			children = (
+				85D58BDA269AB3CC008DFBD5 /* Levels */,
 				85D58BC326996FDC008DFBD5 /* Textures */,
 				85F2412A269869F000B743F4 /* stb_image.h */,
 				85D58BC8269980FE008DFBD5 /* glad.c */,
@@ -129,6 +162,12 @@
 				85F2412E269948D900B743F4 /* FragmentShader.fragmentshader */,
 				85F2412F2699496600B743F4 /* SpriteRenderer.cpp */,
 				85F241302699496600B743F4 /* SpriteRenderer.hpp */,
+				85D58BCA269A97E2008DFBD5 /* GameObject.cpp */,
+				85D58BCB269A97E2008DFBD5 /* GameObject.hpp */,
+				85D58BD5269A9D38008DFBD5 /* GameLevel.cpp */,
+				85D58BD6269A9D38008DFBD5 /* GameLevel.hpp */,
+				85D58BDF269B0FB3008DFBD5 /* BallObject.cpp */,
+				85D58BE0269B0FB3008DFBD5 /* BallObject.hpp */,
 			);
 			path = opengl_game_prac;
 			sourceTree = "<group>";
@@ -200,6 +239,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85D58BD7269A9D38008DFBD5 /* GameLevel.cpp in Sources */,
+				85D58BE1269B0FB3008DFBD5 /* BallObject.cpp in Sources */,
 				85F24125269844DE00B743F4 /* Texture.cpp in Sources */,
 				85F241312699496600B743F4 /* SpriteRenderer.cpp in Sources */,
 				85D58BC426997881008DFBD5 /* Shader.cpp in Sources */,
@@ -208,6 +249,7 @@
 				85F2411D269826D900B743F4 /* Game.cpp in Sources */,
 				85F2412926984AF600B743F4 /* ResourceManager.cpp in Sources */,
 				85D58BC926998104008DFBD5 /* glad.c in Sources */,
+				85D58BCC269A97E2008DFBD5 /* GameObject.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
