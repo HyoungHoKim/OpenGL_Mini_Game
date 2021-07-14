@@ -11,8 +11,16 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+// Save : boost::serialization
+#include <fstream>
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
+
 #include "GameLevel.hpp"
 #include "GameObject.hpp"
+#include "Serializable.hpp"
 
 // Represents the current state of the game
 enum GameState {
@@ -77,5 +85,8 @@ public:
     void            ResetLevel();
     void            ResetPlayer();
 };
+
+void saveFileOut(Serializable &saveData);
+void saveFileIn(Serializable &saveData);
 
 #endif /* Game_hpp */

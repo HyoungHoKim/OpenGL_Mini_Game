@@ -13,8 +13,10 @@
 // Game-related State data
 SpriteRenderer *Renderer;
 GameObject     *Player;
+BallObject     *Ball;
 
-BallObject *Ball;
+// Game-save data
+Serializable   *saveData;
 
 Game::Game(unsigned int _width, unsigned int _height)
 : state(GAME_ACTIVE), keys(), width(_width), height(_height)
@@ -90,7 +92,10 @@ void            Game::Init()
     Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
     vec2 ballPos = playerPos + vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -BALL_RADIUS * 2.0f);
     Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("face"));
-
+    vector<bool> bricks_destroyed;
+    for (GameObject &t_brick : this->levels[this->level].getBricks())
+        bricks_destroyed.push_back(t_brick.getDestroyed());
+    saveData = new Serializable(bricks_destroyed);
 }
 // game loop
 void            Game::processInput(float dt)
@@ -122,6 +127,22 @@ void            Game::processInput(float dt)
                     Ball->setPositionX(ballPosX + velocity);
                 }
             }
+        }
+        if (this->keys[GLFW_KEY_P])
+        {
+            vector<bool> bricks_destroyed;
+            for (GameObject t_brick : this->levels[this->level].getBricks())
+                bricks_destroyed.push_back(t_brick.getDestroyed());
+            saveData->setDestroyed(bricks_destroyed);
+            saveFileOut(*saveData);
+        }
+        if (this->keys[GLFW_KEY_O])
+        {
+            saveFileIn(*saveData);
+            vector<bool> &bricks_destroyed = saveData->getDestroyed();
+            int i = 0;
+            for (GameObject &g_brick : this->levels[this->level].getBricks())
+                g_brick.setDestoryed(bricks_destroyed[i++]);
         }
         if (this->keys[GLFW_KEY_SPACE])
             Ball->setStuck(false);
@@ -176,6 +197,37 @@ void Game::ResetPlayer()
     Player->setPositionX(this->width / 2.0f - PLAYER_SIZE.x / 2.0f);
     Player->setPositionY(this->height - PLAYER_SIZE.y);
     Ball->Reset(Player->getPosition() + vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -(BALL_RADIUS * 2.0f)), INITIAL_BALL_VELOCITY);
+}
+
+// Load & Save
+void saveFileOut(Serializable &saveData)
+{
+    ofstream file("Save/save.dat");
+    if (file.is_open())
+    {
+        cout << "Save!!!" << endl;
+        // Text 형식으로 직렬화
+        // boost::archive::text_oarchive oa(file);
+        // binary 형식으로 직렬화
+        boost::archive::binary_oarchive oa(file);
+        oa << (const Serializable &) saveData;
+        file.close();
+    }
+}
+
+void saveFileIn(Serializable &saveData)
+{
+    ifstream file("Save/save.dat");
+    if (file.is_open())
+    {
+        cout << "Load!!!" << endl;
+        // Text 형식으로 직렬화
+        // boost::archive::text_iarchive ia(file);
+        // binary 형식으로 직렬화
+        boost::archive::binary_iarchive ia(file);
+        ia >> saveData;
+        file.close();
+    }
 }
 
 // collision detection

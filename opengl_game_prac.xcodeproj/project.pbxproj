@@ -12,6 +12,15 @@
 		85D58BCC269A97E2008DFBD5 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D58BCA269A97E2008DFBD5 /* GameObject.cpp */; };
 		85D58BD7269A9D38008DFBD5 /* GameLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D58BD5269A9D38008DFBD5 /* GameLevel.cpp */; };
 		85D58BE1269B0FB3008DFBD5 /* BallObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D58BDF269B0FB3008DFBD5 /* BallObject.cpp */; };
+		85D58BE9269D8087008DFBD5 /* Serializable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D58BE7269D8087008DFBD5 /* Serializable.cpp */; };
+		85D58BEC269DA891008DFBD5 /* libboost_serialization.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D58BEB269DA890008DFBD5 /* libboost_serialization.dylib */; };
+		85D58BED269DA891008DFBD5 /* libboost_serialization.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 85D58BEB269DA890008DFBD5 /* libboost_serialization.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		85D58BEF269DB566008DFBD5 /* libboost_container-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D58BEE269DB566008DFBD5 /* libboost_container-mt.dylib */; };
+		85D58BF0269DB566008DFBD5 /* libboost_container-mt.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 85D58BEE269DB566008DFBD5 /* libboost_container-mt.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		85D58BF2269DB737008DFBD5 /* libboost_filesystem-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D58BF1269DB736008DFBD5 /* libboost_filesystem-mt.dylib */; };
+		85D58BF3269DB737008DFBD5 /* libboost_filesystem-mt.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 85D58BF1269DB736008DFBD5 /* libboost_filesystem-mt.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		85D58BF5269DB748008DFBD5 /* libboost_iostreams.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D58BF4269DB747008DFBD5 /* libboost_iostreams.dylib */; };
+		85D58BF6269DB748008DFBD5 /* libboost_iostreams.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 85D58BF4269DB747008DFBD5 /* libboost_iostreams.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		85F240F92696A4E500B743F4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85F240F82696A4E500B743F4 /* main.cpp */; };
 		85F241092696A6CD00B743F4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F241002696A50C00B743F4 /* OpenGL.framework */; };
 		85F2410A2696A6D500B743F4 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F241062696A5A200B743F4 /* libglfw.3.3.dylib */; };
@@ -41,8 +50,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				85D58BF6269DB748008DFBD5 /* libboost_iostreams.dylib in Embed Libraries */,
 				85F2410B2696A6D500B743F4 /* libglfw.3.3.dylib in Embed Libraries */,
 				85F2410E2696A6E100B743F4 /* libGLEW.2.2.0.dylib in Embed Libraries */,
+				85D58BED269DA891008DFBD5 /* libboost_serialization.dylib in Embed Libraries */,
+				85D58BF3269DB737008DFBD5 /* libboost_filesystem-mt.dylib in Embed Libraries */,
+				85D58BF0269DB566008DFBD5 /* libboost_container-mt.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,6 +79,15 @@
 		85D58BDE269AB531008DFBD5 /* four.lvl */ = {isa = PBXFileReference; lastKnownFileType = text; path = four.lvl; sourceTree = "<group>"; };
 		85D58BDF269B0FB3008DFBD5 /* BallObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BallObject.cpp; sourceTree = "<group>"; };
 		85D58BE0269B0FB3008DFBD5 /* BallObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BallObject.hpp; sourceTree = "<group>"; };
+		85D58BE2269D688F008DFBD5 /* local */ = {isa = PBXFileReference; lastKnownFileType = folder; name = local; path = ../../../../usr/local; sourceTree = "<group>"; };
+		85D58BE3269D68CE008DFBD5 /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; name = lib; path = ../../../../usr/local/Cellar/boost/1.76.0/lib; sourceTree = "<group>"; };
+		85D58BE7269D8087008DFBD5 /* Serializable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Serializable.cpp; sourceTree = "<group>"; };
+		85D58BE8269D8087008DFBD5 /* Serializable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Serializable.hpp; sourceTree = "<group>"; };
+		85D58BEB269DA890008DFBD5 /* libboost_serialization.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_serialization.dylib; path = ../../../../usr/local/Cellar/boost/1.76.0/lib/libboost_serialization.dylib; sourceTree = "<group>"; };
+		85D58BEE269DB566008DFBD5 /* libboost_container-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_container-mt.dylib"; path = "../../../../usr/local/Cellar/boost/1.76.0/lib/libboost_container-mt.dylib"; sourceTree = "<group>"; };
+		85D58BF1269DB736008DFBD5 /* libboost_filesystem-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_filesystem-mt.dylib"; path = "../../../../usr/local/Cellar/boost/1.76.0/lib/libboost_filesystem-mt.dylib"; sourceTree = "<group>"; };
+		85D58BF4269DB747008DFBD5 /* libboost_iostreams.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_iostreams.dylib; path = ../../../../usr/local/Cellar/boost/1.76.0/lib/libboost_iostreams.dylib; sourceTree = "<group>"; };
+		85D58BF7269DC89D008DFBD5 /* save.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = save.dat; sourceTree = "<group>"; };
 		85F240F52696A4E500B743F4 /* opengl_game_prac */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = opengl_game_prac; sourceTree = BUILT_PRODUCTS_DIR; };
 		85F240F82696A4E500B743F4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		85F241002696A50C00B743F4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -93,6 +115,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				85F2410A2696A6D500B743F4 /* libglfw.3.3.dylib in Frameworks */,
+				85D58BEF269DB566008DFBD5 /* libboost_container-mt.dylib in Frameworks */,
+				85D58BF5269DB748008DFBD5 /* libboost_iostreams.dylib in Frameworks */,
+				85D58BF2269DB737008DFBD5 /* libboost_filesystem-mt.dylib in Frameworks */,
+				85D58BEC269DA891008DFBD5 /* libboost_serialization.dylib in Frameworks */,
 				85F2410D2696A6E100B743F4 /* libGLEW.2.2.0.dylib in Frameworks */,
 				85F241092696A6CD00B743F4 /* OpenGL.framework in Frameworks */,
 			);
@@ -124,6 +150,14 @@
 			path = Levels;
 			sourceTree = "<group>";
 		};
+		85D58BEA269D8523008DFBD5 /* Save */ = {
+			isa = PBXGroup;
+			children = (
+				85D58BF7269DC89D008DFBD5 /* save.dat */,
+			);
+			path = Save;
+			sourceTree = "<group>";
+		};
 		85F240EC2696A4E500B743F4 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +178,7 @@
 		85F240F72696A4E500B743F4 /* opengl_game_prac */ = {
 			isa = PBXGroup;
 			children = (
+				85D58BEA269D8523008DFBD5 /* Save */,
 				85D58BDA269AB3CC008DFBD5 /* Levels */,
 				85D58BC326996FDC008DFBD5 /* Textures */,
 				85F2412A269869F000B743F4 /* stb_image.h */,
@@ -168,6 +203,8 @@
 				85D58BD6269A9D38008DFBD5 /* GameLevel.hpp */,
 				85D58BDF269B0FB3008DFBD5 /* BallObject.cpp */,
 				85D58BE0269B0FB3008DFBD5 /* BallObject.hpp */,
+				85D58BE7269D8087008DFBD5 /* Serializable.cpp */,
+				85D58BE8269D8087008DFBD5 /* Serializable.hpp */,
 			);
 			path = opengl_game_prac;
 			sourceTree = "<group>";
@@ -175,6 +212,12 @@
 		85F240FF2696A50C00B743F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				85D58BF4269DB747008DFBD5 /* libboost_iostreams.dylib */,
+				85D58BF1269DB736008DFBD5 /* libboost_filesystem-mt.dylib */,
+				85D58BEE269DB566008DFBD5 /* libboost_container-mt.dylib */,
+				85D58BEB269DA890008DFBD5 /* libboost_serialization.dylib */,
+				85D58BE3269D68CE008DFBD5 /* lib */,
+				85D58BE2269D688F008DFBD5 /* local */,
 				85F241062696A5A200B743F4 /* libglfw.3.3.dylib */,
 				85F241022696A58A00B743F4 /* libGLEW.2.2.0.dylib */,
 				85F241002696A50C00B743F4 /* OpenGL.framework */,
@@ -239,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85D58BE9269D8087008DFBD5 /* Serializable.cpp in Sources */,
 				85D58BD7269A9D38008DFBD5 /* GameLevel.cpp in Sources */,
 				85D58BE1269B0FB3008DFBD5 /* BallObject.cpp in Sources */,
 				85F24125269844DE00B743F4 /* Texture.cpp in Sources */,
@@ -376,7 +420,9 @@
 					"$(inherited)",
 					/usr/local/Cellar/glfw/3.3.4/lib,
 					/usr/local/Cellar/glew/2.2.0_1/lib,
+					/usr/local/Cellar/boost/1.76.0/lib,
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -390,7 +436,9 @@
 					"$(inherited)",
 					/usr/local/Cellar/glfw/3.3.4/lib,
 					/usr/local/Cellar/glew/2.2.0_1/lib,
+					/usr/local/Cellar/boost/1.76.0/lib,
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
