@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/hyoukim/Desktop/opengl_game_prac/opengl_game_prac/SpriteRenderer.cpp \
-  /Users/hyoukim/Desktop/opengl_game_prac/opengl_game_prac/SpriteRenderer.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/SpriteRenderer.cpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/SpriteRenderer.hpp \
   /usr/local/include/glad/glad.h /usr/local/include/KHR/khrplatform.h \
   /usr/local/include/glm/glm.hpp \
   /usr/local/include/glm/detail/_fixes.hpp \
@@ -172,8 +172,8 @@ dependencies: \
   /usr/local/include/glm/gtc/../geometric.hpp \
   /usr/local/include/glm/gtc/../trigonometric.hpp \
   /usr/local/include/glm/gtc/../matrix.hpp \
-  /Users/hyoukim/Desktop/opengl_game_prac/opengl_game_prac/Texture.hpp \
-  /Users/hyoukim/Desktop/opengl_game_prac/opengl_game_prac/Shader.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/Texture.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/Shader.hpp \
   /usr/local/include/glm/gtc/type_ptr.hpp \
   /usr/local/include/glm/gtc/../gtc/quaternion.hpp \
   /usr/local/include/glm/gtc/../gtc/constants.hpp \

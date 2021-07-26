@@ -1,8 +1,8 @@
 dependencies: \
-  /Users/hyoukim/Desktop/opengl_game_prac/opengl_game_prac/main.cpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/main.cpp \
   /usr/local/include/glad/glad.h /usr/local/include/KHR/khrplatform.h \
   /usr/local/include/GLFW/glfw3.h \
-  /Users/hyoukim/Desktop/opengl_game_prac/opengl_game_prac/Game.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/Game.hpp \
   /usr/local/include/boost/archive/text_oarchive.hpp \
   /usr/local/include/boost/config.hpp \
   /usr/local/include/boost/config/user.hpp \
@@ -411,7 +411,7 @@ dependencies: \
   /usr/local/include/boost/archive/binary_iarchive_impl.hpp \
   /usr/local/include/boost/archive/basic_binary_iprimitive.hpp \
   /usr/local/include/boost/archive/basic_binary_iarchive.hpp \
-  /Users/hyoukim/Desktop/opengl_game_prac/opengl_game_prac/GameLevel.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/GameLevel.hpp \
   /usr/local/include/glm/glm.hpp \
   /usr/local/include/glm/detail/_fixes.hpp \
   /usr/local/include/glm/detail/setup.hpp \
@@ -559,9 +559,9 @@ dependencies: \
   /usr/local/include/glm/vector_relational.hpp \
   /usr/local/include/glm/integer.hpp \
   /usr/local/include/glm/detail/func_integer.inl \
-  /Users/hyoukim/Desktop/opengl_game_prac/opengl_game_prac/GameObject.hpp \
-  /Users/hyoukim/Desktop/opengl_game_prac/opengl_game_prac/Texture.hpp \
-  /Users/hyoukim/Desktop/opengl_game_prac/opengl_game_prac/SpriteRenderer.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/GameObject.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/Texture.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/SpriteRenderer.hpp \
   /usr/local/include/glm/gtc/matrix_transform.hpp \
   /usr/local/include/glm/gtc/../mat4x4.hpp \
   /usr/local/include/glm/gtc/../vec2.hpp \
@@ -585,7 +585,7 @@ dependencies: \
   /usr/local/include/glm/gtc/../geometric.hpp \
   /usr/local/include/glm/gtc/../trigonometric.hpp \
   /usr/local/include/glm/gtc/../matrix.hpp \
-  /Users/hyoukim/Desktop/opengl_game_prac/opengl_game_prac/Shader.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/Shader.hpp \
   /usr/local/include/glm/gtc/type_ptr.hpp \
   /usr/local/include/glm/gtc/../gtc/quaternion.hpp \
   /usr/local/include/glm/gtc/../gtc/constants.hpp \
@@ -662,8 +662,8 @@ dependencies: \
   /usr/local/include/glm/gtc/../mat4x2.hpp \
   /usr/local/include/glm/gtc/../mat4x3.hpp \
   /usr/local/include/glm/gtc/type_ptr.inl \
-  /Users/hyoukim/Desktop/opengl_game_prac/opengl_game_prac/ResourceManager.hpp \
-  /Users/hyoukim/Desktop/opengl_game_prac/opengl_game_prac/Serializable.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/ResourceManager.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/Serializable.hpp \
   /usr/local/include/boost/asio.hpp \
   /usr/local/include/boost/asio/associated_allocator.hpp \
   /usr/local/include/boost/asio/detail/config.hpp \

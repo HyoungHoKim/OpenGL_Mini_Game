@@ -9,14 +9,20 @@
 #include "ResourceManager.hpp"
 #include "SpriteRenderer.hpp"
 #include "BallObject.hpp"
+#include "ParticleGenerator.hpp"
+#include "PostProcessor.hpp"
 
 // Game-related State data
-SpriteRenderer *Renderer;
-GameObject     *Player;
-BallObject     *Ball;
+SpriteRenderer      *Renderer;
+GameObject          *Player;
+BallObject          *Ball;
+ParticleGenerator   *Particles;
+PostProcessor       *Effects;
+
+float ShakeTime = 0.0f;
 
 // Game-save data
-Serializable   *saveData;
+// Serializable   *saveData;
 
 Game::Game(unsigned int _width, unsigned int _height)
 : state(GAME_ACTIVE), keys(), width(_width), height(_height)
@@ -29,6 +35,9 @@ Game::~Game()
     delete Renderer;
     delete Player;
     delete Ball;
+    delete Particles;
+    delete Effects;
+    // delete saveData;
 }
 
 GameState       Game::getGameState(void) const
@@ -60,28 +69,31 @@ void            Game::setKeys(int key, bool isPress)
 // initialize game state (load all shaders/textures)
 void            Game::Init()
 {
-    ResourceManager::LoadShader("VertexShader.vertexshader", "FragmentShader.fragmentshader", nullptr, "sprite");
+    ResourceManager::LoadShader("Shaders/VertexShader.vertexshader", "Shaders/FragmentShader.fragmentshader", nullptr, "sprite");
+    ResourceManager::LoadShader("Shaders/ParticleVertexShader.vertexshader", "Shaders/ParticleFragmentShader.fragmentshader", nullptr, "particle");
+    ResourceManager::LoadShader("Shaders/PP_VertexShader.vertexshader", "Shaders/PP_FragmentShader.fragmentshader", nullptr, "postprocessing");
     // configure shaders
     mat4 projection = glm::ortho(0.0f, static_cast<float>(this->width), static_cast<float>(this->height), 0.0f, -1.0f, 1.0f);
     ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
     ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
-    // set render-specific controls
-    Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
+    ResourceManager::GetShader("particle").Use().SetInteger("sprite", 0);
+    ResourceManager::GetShader("particle").SetMatrix4("projection", projection);
     //load texture
     ResourceManager::LoadTexture("Textures/background.jpeg", false, "background");
     ResourceManager::LoadTexture("Textures/awesomeface.png", true, "face");
     ResourceManager::LoadTexture("Textures/block.png", false, "block");
     ResourceManager::LoadTexture("Textures/block_solid.png", false, "block_solid");
     ResourceManager::LoadTexture("Textures/paddle.png", true, "paddle");
+    ResourceManager::LoadTexture("Textures/particle.png", true, "particle");
+    // set render-specific controls
+    Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
+    Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
+    Effects = new PostProcessor(ResourceManager::GetShader("postprocessing"), this->width, this->height);
     // load levels
-    GameLevel one;
-    one.Load("Levels/one.lvl", this->width, this->height / 2);
-    GameLevel two;
-    two.Load("Levels/two.lvl", this->width, this->height / 2);
-    GameLevel three;
-    three.Load("Levels/three.lvl", this->width, this->height / 2);
-    GameLevel four;
-    four.Load("Levels/four.lvl", this->width, this->height / 2);
+    GameLevel one; one.Load("Levels/one.lvl", this->width, this->height / 2);
+    GameLevel two; two.Load("Levels/two.lvl", this->width, this->height / 2);
+    GameLevel three; three.Load("Levels/three.lvl", this->width, this->height / 2);
+    GameLevel four; four.Load("Levels/four.lvl", this->width, this->height / 2);
     this->levels.push_back(one);
     this->levels.push_back(two);
     this->levels.push_back(three);
@@ -92,10 +104,10 @@ void            Game::Init()
     Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
     vec2 ballPos = playerPos + vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -BALL_RADIUS * 2.0f);
     Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("face"));
-    vector<bool> bricks_destroyed;
+    /*vector<bool> bricks_destroyed;
     for (GameObject &t_brick : this->levels[this->level].getBricks())
         bricks_destroyed.push_back(t_brick.getDestroyed());
-    saveData = new Serializable(bricks_destroyed);
+    saveData = new Serializable(bricks_destroyed);*/
 }
 // game loop
 void            Game::processInput(float dt)
@@ -128,7 +140,7 @@ void            Game::processInput(float dt)
                 }
             }
         }
-        if (this->keys[GLFW_KEY_P])
+        /*if (this->keys[GLFW_KEY_P])
         {
             vector<bool> bricks_destroyed;
             for (GameObject t_brick : this->levels[this->level].getBricks())
@@ -143,7 +155,7 @@ void            Game::processInput(float dt)
             int i = 0;
             for (GameObject &g_brick : this->levels[this->level].getBricks())
                 g_brick.setDestoryed(bricks_destroyed[i++]);
-        }
+        }*/
         if (this->keys[GLFW_KEY_SPACE])
             Ball->setStuck(false);
     }
@@ -155,6 +167,15 @@ void            Game::update(float dt)
     Ball->Move(dt, this->width);
     // check for collisions
     this->DoCollisions();
+    // update particles
+    Particles->Update(dt, *Ball, 2, glm::vec2(Ball->getRadius() / 2.0f));
+    // reduce shake time
+    if (ShakeTime > 0.0f)
+    {
+        ShakeTime -= dt;
+        if (ShakeTime <= 0.0f)
+            Effects->shake = false;
+    }
     // check loss condition
     if (Ball->getPosition().y >= this->height) // did ball reach bottom edge
     {
@@ -167,14 +188,23 @@ void            Game::render(void)
 {
     if (this->state == GAME_ACTIVE)
     {
-        // draw background
-        Renderer->DrawSprite(ResourceManager::GetTexture("background"), glm::vec2(0.0f, 0.0f), glm::vec2(this->width, this->height), 0.0f);
-        // draw level
-        this->levels[this->level].Draw(*Renderer);
-        // draw player
-        Player->Draw(*Renderer);
-        // draw ball
-        Ball->Draw(*Renderer);
+        // begin rendering to postprocessing framebuffer
+        Effects->BeginRender();
+            // draw background
+            Renderer->DrawSprite(ResourceManager::GetTexture("background"), glm::vec2(0.0f, 0.0f), glm::vec2(this->width, this->height), 0.0f);
+            // draw level
+            this->levels[this->level].Draw(*Renderer);
+            // draw player
+            Player->Draw(*Renderer);
+            // draw ball
+            Ball->Draw(*Renderer);
+            // draw particles
+            Particles->Draw();
+        // end rendering to postprocessing framebuffer
+        Effects->EndRender();
+        // render postProcessing quad
+        Effects->Render(glfwGetTime());
+        
     }
 }
 
@@ -247,6 +277,9 @@ void Game::DoCollisions()
                 // destroy block if not solid
                 if (!box.getIsSolid())
                     box.setDestoryed(true);
+                // if block is solid, enable shake effect
+                ShakeTime = 0.05f;
+                Effects->shake = true;
                 // collision resoultion
                 Direction dir = get<1>(collision);
                 vec2 diff_vector = get<2>(collision);

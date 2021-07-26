@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8554ACA126AE867C00D1BDC5 /* PostProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8554AC9F26AE867C00D1BDC5 /* PostProcessor.cpp */; };
+		8588F52826AB8F3E00B55623 /* ParticleGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8588F52626AB8F3E00B55623 /* ParticleGenerator.cpp */; };
 		85D58BC426997881008DFBD5 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85F24120269838A300B743F4 /* Shader.cpp */; };
 		85D58BC926998104008DFBD5 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 85D58BC8269980FE008DFBD5 /* glad.c */; };
 		85D58BCC269A97E2008DFBD5 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D58BCA269A97E2008DFBD5 /* GameObject.cpp */; };
@@ -63,6 +65,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8554AC9D26AE773700D1BDC5 /* PP_VertexShader.vertexshader */ = {isa = PBXFileReference; lastKnownFileType = text; path = PP_VertexShader.vertexshader; sourceTree = "<group>"; };
+		8554AC9E26AE7B0A00D1BDC5 /* PP_FragmentShader.fragmentshader */ = {isa = PBXFileReference; lastKnownFileType = text; path = PP_FragmentShader.fragmentshader; sourceTree = "<group>"; };
+		8554AC9F26AE867C00D1BDC5 /* PostProcessor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PostProcessor.cpp; sourceTree = "<group>"; };
+		8554ACA026AE867C00D1BDC5 /* PostProcessor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PostProcessor.hpp; sourceTree = "<group>"; };
+		8588F52626AB8F3E00B55623 /* ParticleGenerator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleGenerator.cpp; sourceTree = "<group>"; };
+		8588F52726AB8F3E00B55623 /* ParticleGenerator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ParticleGenerator.hpp; sourceTree = "<group>"; };
+		8588F52A26ABA68700B55623 /* ParticleVertexShader.vertexshader */ = {isa = PBXFileReference; lastKnownFileType = text; path = ParticleVertexShader.vertexshader; sourceTree = "<group>"; };
+		8588F52B26ABA8E200B55623 /* ParticleFragmentShader.fragmentshader */ = {isa = PBXFileReference; lastKnownFileType = text; path = ParticleFragmentShader.fragmentshader; sourceTree = "<group>"; };
+		8588F52C26AC055E00B55623 /* particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle.png; sourceTree = "<group>"; };
 		85D58BC226996FC7008DFBD5 /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
 		85D58BC8269980FE008DFBD5 /* glad.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
 		85D58BCA269A97E2008DFBD5 /* GameObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
@@ -127,9 +138,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8588F52926ABA64D00B55623 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				85F2412D2699482C00B743F4 /* VertexShader.vertexshader */,
+				85F2412E269948D900B743F4 /* FragmentShader.fragmentshader */,
+				8588F52A26ABA68700B55623 /* ParticleVertexShader.vertexshader */,
+				8588F52B26ABA8E200B55623 /* ParticleFragmentShader.fragmentshader */,
+				8554AC9D26AE773700D1BDC5 /* PP_VertexShader.vertexshader */,
+				8554AC9E26AE7B0A00D1BDC5 /* PP_FragmentShader.fragmentshader */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
 		85D58BC326996FDC008DFBD5 /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				8588F52C26AC055E00B55623 /* particle.png */,
 				85D58BD9269AB2E3008DFBD5 /* background.jpeg */,
 				85D58BD8269AAD02008DFBD5 /* paddle.png */,
 				85D58BD4269A9D09008DFBD5 /* block_solid.png */,
@@ -178,6 +203,7 @@
 		85F240F72696A4E500B743F4 /* opengl_game_prac */ = {
 			isa = PBXGroup;
 			children = (
+				8588F52926ABA64D00B55623 /* Shaders */,
 				85D58BEA269D8523008DFBD5 /* Save */,
 				85D58BDA269AB3CC008DFBD5 /* Levels */,
 				85D58BC326996FDC008DFBD5 /* Textures */,
@@ -193,8 +219,6 @@
 				85F24124269844DE00B743F4 /* Texture.hpp */,
 				85F2412726984AF600B743F4 /* ResourceManager.cpp */,
 				85F2412826984AF600B743F4 /* ResourceManager.hpp */,
-				85F2412D2699482C00B743F4 /* VertexShader.vertexshader */,
-				85F2412E269948D900B743F4 /* FragmentShader.fragmentshader */,
 				85F2412F2699496600B743F4 /* SpriteRenderer.cpp */,
 				85F241302699496600B743F4 /* SpriteRenderer.hpp */,
 				85D58BCA269A97E2008DFBD5 /* GameObject.cpp */,
@@ -205,6 +229,10 @@
 				85D58BE0269B0FB3008DFBD5 /* BallObject.hpp */,
 				85D58BE7269D8087008DFBD5 /* Serializable.cpp */,
 				85D58BE8269D8087008DFBD5 /* Serializable.hpp */,
+				8588F52626AB8F3E00B55623 /* ParticleGenerator.cpp */,
+				8588F52726AB8F3E00B55623 /* ParticleGenerator.hpp */,
+				8554AC9F26AE867C00D1BDC5 /* PostProcessor.cpp */,
+				8554ACA026AE867C00D1BDC5 /* PostProcessor.hpp */,
 			);
 			path = opengl_game_prac;
 			sourceTree = "<group>";
@@ -283,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85D58BE9269D8087008DFBD5 /* Serializable.cpp in Sources */,
+				8588F52826AB8F3E00B55623 /* ParticleGenerator.cpp in Sources */,
 				85D58BD7269A9D38008DFBD5 /* GameLevel.cpp in Sources */,
 				85D58BE1269B0FB3008DFBD5 /* BallObject.cpp in Sources */,
 				85F24125269844DE00B743F4 /* Texture.cpp in Sources */,
@@ -291,6 +320,7 @@
 				85F240F92696A4E500B743F4 /* main.cpp in Sources */,
 				85F2412C26986BBD00B743F4 /* stb_image.cpp in Sources */,
 				85F2411D269826D900B743F4 /* Game.cpp in Sources */,
+				8554ACA126AE867C00D1BDC5 /* PostProcessor.cpp in Sources */,
 				85F2412926984AF600B743F4 /* ResourceManager.cpp in Sources */,
 				85D58BC926998104008DFBD5 /* glad.c in Sources */,
 				85D58BCC269A97E2008DFBD5 /* GameObject.cpp in Sources */,

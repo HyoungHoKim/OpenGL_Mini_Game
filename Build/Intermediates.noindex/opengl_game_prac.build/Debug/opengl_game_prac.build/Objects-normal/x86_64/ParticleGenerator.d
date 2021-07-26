@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/Shader.cpp \
-  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/Shader.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/ParticleGenerator.cpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/ParticleGenerator.hpp \
   /usr/local/include/glad/glad.h /usr/local/include/KHR/khrplatform.h \
   /usr/local/include/glm/glm.hpp \
   /usr/local/include/glm/detail/_fixes.hpp \
@@ -149,6 +149,7 @@ dependencies: \
   /usr/local/include/glm/vector_relational.hpp \
   /usr/local/include/glm/integer.hpp \
   /usr/local/include/glm/detail/func_integer.inl \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/Shader.hpp \
   /usr/local/include/glm/gtc/type_ptr.hpp \
   /usr/local/include/glm/gtc/../gtc/quaternion.hpp \
   /usr/local/include/glm/gtc/../gtc/constants.hpp \
@@ -246,4 +247,8 @@ dependencies: \
   /usr/local/include/glm/gtc/../mat3x4.hpp \
   /usr/local/include/glm/gtc/../mat4x2.hpp \
   /usr/local/include/glm/gtc/../mat4x3.hpp \
-  /usr/local/include/glm/gtc/type_ptr.inl
+  /usr/local/include/glm/gtc/type_ptr.inl \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/Texture.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/GameObject.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/SpriteRenderer.hpp \
+  /usr/local/include/glm/gtc/matrix_transform.hpp

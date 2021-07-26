@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/Shader.cpp \
-  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/Shader.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/PostProcessor.cpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/PostProcessor.hpp \
   /usr/local/include/glad/glad.h /usr/local/include/KHR/khrplatform.h \
   /usr/local/include/glm/glm.hpp \
   /usr/local/include/glm/detail/_fixes.hpp \
@@ -149,19 +149,18 @@ dependencies: \
   /usr/local/include/glm/vector_relational.hpp \
   /usr/local/include/glm/integer.hpp \
   /usr/local/include/glm/detail/func_integer.inl \
-  /usr/local/include/glm/gtc/type_ptr.hpp \
-  /usr/local/include/glm/gtc/../gtc/quaternion.hpp \
-  /usr/local/include/glm/gtc/../gtc/constants.hpp \
-  /usr/local/include/glm/gtc/../ext/scalar_constants.hpp \
-  /usr/local/include/glm/./ext/scalar_constants.inl \
-  /usr/local/include/glm/gtc/constants.inl \
-  /usr/local/include/glm/gtc/../gtc/matrix_transform.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/Texture.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/SpriteRenderer.hpp \
+  /usr/local/include/glm/gtc/matrix_transform.hpp \
   /usr/local/include/glm/gtc/../mat4x4.hpp \
   /usr/local/include/glm/gtc/../vec2.hpp \
   /usr/local/include/glm/gtc/../vec3.hpp \
   /usr/local/include/glm/gtc/../vec4.hpp \
   /usr/local/include/glm/gtc/../ext/matrix_projection.hpp \
   /usr/local/include/glm/./ext/../gtc/constants.hpp \
+  /usr/local/include/glm/gtc/../ext/scalar_constants.hpp \
+  /usr/local/include/glm/./ext/scalar_constants.inl \
+  /usr/local/include/glm/gtc/constants.inl \
   /usr/local/include/glm/./ext/../geometric.hpp \
   /usr/local/include/glm/./ext/../trigonometric.hpp \
   /usr/local/include/glm/./ext/../matrix.hpp \
@@ -175,6 +174,11 @@ dependencies: \
   /usr/local/include/glm/gtc/../geometric.hpp \
   /usr/local/include/glm/gtc/../trigonometric.hpp \
   /usr/local/include/glm/gtc/../matrix.hpp \
+  /Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac/Shader.hpp \
+  /usr/local/include/glm/gtc/type_ptr.hpp \
+  /usr/local/include/glm/gtc/../gtc/quaternion.hpp \
+  /usr/local/include/glm/gtc/../gtc/constants.hpp \
+  /usr/local/include/glm/gtc/../gtc/matrix_transform.hpp \
   /usr/local/include/glm/gtc/../ext/vector_relational.hpp \
   /usr/local/include/glm/./ext/../detail/qualifier.hpp \
   /usr/local/include/glm/./ext/vector_relational.inl \

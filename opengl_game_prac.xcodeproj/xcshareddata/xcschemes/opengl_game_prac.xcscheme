@@ -36,7 +36,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/hyoukim/Desktop/opengl_game_prac/opengl_game_prac"
+      customWorkingDirectory = "/Users/hyoukim/Desktop/OpenGL_Mini_Game/opengl_game_prac"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
