@@ -85,6 +85,12 @@ void            Game::Init()
     ResourceManager::LoadTexture("Textures/block_solid.png", false, "block_solid");
     ResourceManager::LoadTexture("Textures/paddle.png", true, "paddle");
     ResourceManager::LoadTexture("Textures/particle.png", true, "particle");
+    ResourceManager::LoadTexture("Textures/powerup_speed.png", true, "powerup_speed");
+    ResourceManager::LoadTexture("Textures/powerup_sticky.png", true, "powerup_sticky");
+    ResourceManager::LoadTexture("Textures/powerup_increase.png", true, "powerup_increase");
+    ResourceManager::LoadTexture("Textures/powerup_confuse.png", true, "powerup_confuse");
+    ResourceManager::LoadTexture("Textures/powerup_chaos.png", true, "powerup_chaos");
+    ResourceManager::LoadTexture("Textures/powerup_passthrough.png", true, "powerup_passthrough");
     // set render-specific controls
     Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
     Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
@@ -169,6 +175,8 @@ void            Game::update(float dt)
     this->DoCollisions();
     // update particles
     Particles->Update(dt, *Ball, 2, glm::vec2(Ball->getRadius() / 2.0f));
+    // update PowerUps
+    this->UpdatePowerUp(dt);
     // reduce shake time
     if (ShakeTime > 0.0f)
     {
@@ -196,6 +204,10 @@ void            Game::render(void)
             this->levels[this->level].Draw(*Renderer);
             // draw player
             Player->Draw(*Renderer);
+            // draw PowerUps
+            for (PowerUp &powerUp : this->powerUps)
+                if (!powerUp.getDestroyed())
+                    powerUp.Draw(*Renderer);
             // draw ball
             Ball->Draw(*Renderer);
             // draw particles
@@ -227,6 +239,137 @@ void Game::ResetPlayer()
     Player->setPositionX(this->width / 2.0f - PLAYER_SIZE.x / 2.0f);
     Player->setPositionY(this->height - PLAYER_SIZE.y);
     Ball->Reset(Player->getPosition() + vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -(BALL_RADIUS * 2.0f)), INITIAL_BALL_VELOCITY);
+    Effects->chaos = Effects->confuse = false;
+    Ball->setSticky(false);
+    Ball->setPassThrough(false);
+    Player->setColor(vec3(1.0f));
+    Ball->setColor(vec3(1.0f));
+}
+
+// powerups
+bool IsOtherPowerUpActive(vector<PowerUp> &powerups, string type);
+
+void Game::UpdatePowerUp(float dt)
+{
+    for (PowerUp &powerUp : this->powerUps)
+    {
+        powerUp.setPositionX(powerUp.getPosition().x + powerUp.getVelocity().x * dt);
+        powerUp.setPositionY(powerUp.getPosition().y + powerUp.getVelocity().y * dt);
+        if (powerUp.activated)
+        {
+            powerUp.duration -= dt;
+            
+            if (powerUp.duration <= 0.0f)
+            {
+                // remove powerup from list (will later be removed)
+                powerUp.activated = false;
+                // deactivate effects
+                if (powerUp.type == "sticky")
+                {
+                    if (!IsOtherPowerUpActive(this->powerUps, "sticky"))
+                    {
+                        // only reset if no other PowerUp of type sticky is active
+                        Ball->setSticky(false);
+                        Player->setColor(vec3(1.0f));
+                    }
+                    else if (powerUp.type == "pass-through")
+                    {
+                        if (!IsOtherPowerUpActive(this->powerUps, "pass-through"))
+                        {
+                            // only reset if no other PowerUp of type pass-through is active
+                            Ball->setPassThrough(false);
+                            Ball->setColor(vec3(1.0f));
+                        }
+                    }
+                    else if (powerUp.type == "confuse")
+                    {
+                        if (!IsOtherPowerUpActive(this->powerUps, "confuse"))
+                        {
+                            // only reset if no other PowerUp of type confuse is active
+                            Effects->confuse = false;
+                        }
+                    }
+                    else if (powerUp.type == "chaos")
+                    {
+                        if (!IsOtherPowerUpActive(this->powerUps, "chaos"))
+                        {
+                            // only reset if no other PowerUp of type chaos is active
+                            Effects->chaos = false;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // Remove all PowerUps from vector that are destoryed AND !activated (thus either off the map or finished)
+    // Note we use a lamda expression to remove each PowerUp which is destoryed and not activated
+    this->powerUps.erase(remove_if(this->powerUps.begin(), this->powerUps.end(),
+                                   [](const PowerUp & powerUp) {return powerUp.getDestroyed() && !powerUp.activated; }
+                                   ), this->powerUps.end());
+}
+
+bool ShouldSpawn(unsigned int chance)
+{
+    unsigned int random = rand() % chance;
+    return (random == 0);
+}
+
+void Game::SpawnPowerUp(GameObject &block)
+{
+    if (ShouldSpawn(2)) // 1 in 75 chance
+        this->powerUps.push_back(PowerUp("speed", vec3(0.5f, 0.5f, 1.0f), 0.0f, block.getPosition(), ResourceManager::GetTexture("powerup_speed")));
+    if (ShouldSpawn(2))
+        this->powerUps.push_back(PowerUp("sticky", vec3(1.0f, 0.5f, 1.0f), 20.0f, block.getPosition(), ResourceManager::GetTexture("powerup_sticky")));
+    if (ShouldSpawn(2))
+        this->powerUps.push_back(PowerUp("pass-through", vec3(0.5f, 1.0f, 0.5f), 10.0f, block.getPosition(), ResourceManager::GetTexture("powerup_passthrough")));
+    if (ShouldSpawn(2))
+        this->powerUps.push_back(PowerUp("pad-size-increase", vec3(1.0f, 0.6f, 0.4f), 0.0f, block.getPosition(),ResourceManager::GetTexture("powerup_increase")));
+    if (ShouldSpawn(2))
+        this->powerUps.push_back(PowerUp("confuse", vec3(1.0f, 0.3f, 0.3f), 15.0f, block.getPosition(), ResourceManager::GetTexture("powerup_confuse")));
+    if (ShouldSpawn(2))
+        this->powerUps.push_back(PowerUp("chaos", vec3(0.9f, 0.25f, 0.25f), 15.0f, block.getPosition(), ResourceManager::GetTexture("powerup_chaos")));
+}
+
+void ActivePowerUp(PowerUp &powerUp)
+{
+    if (powerUp.type == "speed")
+        Ball->setVelocity(Ball->getVelocity() * 1.2f);
+    else if (powerUp.type == "sticky")
+    {
+        Ball->setSticky(true);
+        Player->setColor(vec3(1.0f, 0.5f, 1.0f));
+    }
+    else if (powerUp.type == "pass-through")
+    {
+        Ball->setPassThrough(true);
+        Ball->setColor(vec3(1.0f, 0.5f, 0.5f));
+    }
+    else if (powerUp.type == "pad-size-increase")
+        Player->setSize(vec2(Player->getSize().x + 50, Player->getSize().y));
+    else if (powerUp.type == "confuse")
+    {
+        if (!Effects->chaos)
+            Effects->confuse = true; // only activate if chaos wasn't already active
+    }
+    else if (powerUp.type == "chaos")
+    {
+        if (!Effects->confuse)
+            Effects->chaos = true;
+    }
+}
+
+bool IsOtherPowerUpActive(vector<PowerUp> &powerups, string type)
+{
+    // Check if another PowerUp of the same type is still active
+    // in which case we don't disable its effect (yet)
+    for (const PowerUp &powerUP : powerups)
+    {
+        if (powerUP.activated)
+            if (powerUP.type == type)
+                return (true);
+    }
+    return (false);
 }
 
 // Load & Save
@@ -276,7 +419,10 @@ void Game::DoCollisions()
             {
                 // destroy block if not solid
                 if (!box.getIsSolid())
+                {
                     box.setDestoryed(true);
+                    this->SpawnPowerUp(box);
+                }
                 // if block is solid, enable shake effect
                 ShakeTime = 0.05f;
                 Effects->shake = true;
@@ -308,6 +454,25 @@ void Game::DoCollisions()
             }
         }
     }
+    
+    // also check collision on PowerUps and if so, activate them
+    for (PowerUp &powerup : this->powerUps)
+    {
+        if (!powerup.getDestroyed())
+        {
+            // first check if powerup passed bottom edge, if so: keep as inactive and destory
+            if (powerup.getPosition().y >= this->height)
+                powerup.setDestoryed(true);
+            
+            if (CheckCollision(*Player, powerup))
+            {
+                // collided with player, now activate powerup
+                ActivePowerUp(powerup);
+                powerup.setDestoryed(true);
+                powerup.activated = true;
+            }
+        }
+    }
     // check collision for player pad (unless stuck)
     Collision result = CheckCollision(*Ball, *Player);
     if (!Ball->getStuck() && get<0>(result))
@@ -325,6 +490,9 @@ void Game::DoCollisions()
         Ball->setVelocity(normalize(Ball->getVelocity()) * length(oldVelocity));
         // fix sticky paddle
         Ball->setVelocityY(-1.0f * abs(Ball->getVelocity().y));
+        
+        // if Sticky powerup is activated, also stick ball to paddle once new velocity vectors were calculate
+        Ball->setStuck(Ball->getSticky());
     }
 }
 

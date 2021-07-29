@@ -26,6 +26,8 @@ private:
     //ball state
     float radius;
     bool stuck;
+    bool sticky;
+    bool passThrough;
 public:
     BallObject();
     BallObject(vec2 pos, float radius, vec2 velocity, Texture2D sprite);
@@ -33,6 +35,10 @@ public:
     float getRadius(void) const;
     bool getStuck(void) const;
     void setStuck(bool _stuck);
+    bool getSticky(void) const;
+    void setSticky(bool _sticky);
+    bool getPassThrough(void) const;
+    void setPassThrough(bool _passThrough);
     
     // moves the ball, keeping it constrained within the window bounds (except bottom edge); returns new position
     vec2 Move(float dt, unsigned int window_width);

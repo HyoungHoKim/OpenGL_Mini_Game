@@ -46,7 +46,8 @@ public:
     void setVelocityY(float _y);
     void setVelocity(vec2 _velocity);
     void setSize(vec2 _size);
-
+    void setColor(vec3 _color);
+    
     // draw sprite
     virtual void Draw(SpriteRenderer &renderer);
 };

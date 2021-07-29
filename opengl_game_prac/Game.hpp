@@ -20,6 +20,7 @@
 
 #include "GameLevel.hpp"
 #include "GameObject.hpp"
+#include "PowerUp.hpp"
 #include "Serializable.hpp"
 
 // Represents the current state of the game
@@ -60,6 +61,7 @@ private:
     unsigned int        width;
     unsigned int        height;
     vector<GameLevel>   levels;
+    vector<PowerUp>     powerUps;
     unsigned int        level;
     
     Game();
@@ -84,6 +86,9 @@ public:
     // reset
     void            ResetLevel();
     void            ResetPlayer();
+    // powerups
+    void            SpawnPowerUp(GameObject &block);
+    void            UpdatePowerUp(float dt);
 };
 
 void saveFileOut(Serializable &saveData);

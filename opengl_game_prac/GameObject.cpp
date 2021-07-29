@@ -80,6 +80,11 @@ void GameObject::setDestoryed(bool _destoryed)
     this->destroyed = _destoryed;
 }
 
+void GameObject::setColor(vec3 _color)
+{
+    this->color = _color;
+}
+
 void GameObject::Draw(SpriteRenderer &renderer)
 {
     renderer.DrawSprite(this->sprite, this->position, this->size, this->rotation, this->color);

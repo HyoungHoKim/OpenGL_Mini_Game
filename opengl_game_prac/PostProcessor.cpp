@@ -10,7 +10,7 @@
 #include <iostream>
 
 PostProcessor::PostProcessor(Shader _shader, unsigned int _width, unsigned int _heigth)
-: PostProcessingShader(_shader), Texture(), width(_width * 2), height(_heigth * 2), confuse(false), chaos(false), shake(false)
+: PostProcessingShader(_shader), Texture(), width(_width), height(_heigth), confuse(false), chaos(false), shake(false)
 {
     // initialize renderbuffer/framebuffer object
     glGenFramebuffers(1, &this->MSFBO);

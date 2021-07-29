@@ -69,6 +69,13 @@
 		8554AC9E26AE7B0A00D1BDC5 /* PP_FragmentShader.fragmentshader */ = {isa = PBXFileReference; lastKnownFileType = text; path = PP_FragmentShader.fragmentshader; sourceTree = "<group>"; };
 		8554AC9F26AE867C00D1BDC5 /* PostProcessor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PostProcessor.cpp; sourceTree = "<group>"; };
 		8554ACA026AE867C00D1BDC5 /* PostProcessor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PostProcessor.hpp; sourceTree = "<group>"; };
+		8554ACA226B2A72A00D1BDC5 /* powerup_chaos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_chaos.png; sourceTree = "<group>"; };
+		8554ACA326B2A72A00D1BDC5 /* powerup_passthrough.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_passthrough.png; sourceTree = "<group>"; };
+		8554ACA426B2A72B00D1BDC5 /* powerup_increase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_increase.png; sourceTree = "<group>"; };
+		8554ACA526B2A72B00D1BDC5 /* powerup_sticky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_sticky.png; sourceTree = "<group>"; };
+		8554ACA626B2A72B00D1BDC5 /* powerup_confuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_confuse.png; sourceTree = "<group>"; };
+		8554ACA726B2A72B00D1BDC5 /* powerup_speed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_speed.png; sourceTree = "<group>"; };
+		8554ACA826B2A74900D1BDC5 /* PowerUp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PowerUp.hpp; sourceTree = "<group>"; };
 		8588F52626AB8F3E00B55623 /* ParticleGenerator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleGenerator.cpp; sourceTree = "<group>"; };
 		8588F52726AB8F3E00B55623 /* ParticleGenerator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ParticleGenerator.hpp; sourceTree = "<group>"; };
 		8588F52A26ABA68700B55623 /* ParticleVertexShader.vertexshader */ = {isa = PBXFileReference; lastKnownFileType = text; path = ParticleVertexShader.vertexshader; sourceTree = "<group>"; };
@@ -154,6 +161,12 @@
 		85D58BC326996FDC008DFBD5 /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				8554ACA226B2A72A00D1BDC5 /* powerup_chaos.png */,
+				8554ACA626B2A72B00D1BDC5 /* powerup_confuse.png */,
+				8554ACA426B2A72B00D1BDC5 /* powerup_increase.png */,
+				8554ACA326B2A72A00D1BDC5 /* powerup_passthrough.png */,
+				8554ACA726B2A72B00D1BDC5 /* powerup_speed.png */,
+				8554ACA526B2A72B00D1BDC5 /* powerup_sticky.png */,
 				8588F52C26AC055E00B55623 /* particle.png */,
 				85D58BD9269AB2E3008DFBD5 /* background.jpeg */,
 				85D58BD8269AAD02008DFBD5 /* paddle.png */,
@@ -233,6 +246,7 @@
 				8588F52726AB8F3E00B55623 /* ParticleGenerator.hpp */,
 				8554AC9F26AE867C00D1BDC5 /* PostProcessor.cpp */,
 				8554ACA026AE867C00D1BDC5 /* PostProcessor.hpp */,
+				8554ACA826B2A74900D1BDC5 /* PowerUp.hpp */,
 			);
 			path = opengl_game_prac;
 			sourceTree = "<group>";
