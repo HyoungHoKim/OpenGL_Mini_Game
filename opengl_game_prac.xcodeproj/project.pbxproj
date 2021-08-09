@@ -65,6 +65,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		851CBC3126C135EE00402FAC /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		8554AC9D26AE773700D1BDC5 /* PP_VertexShader.vertexshader */ = {isa = PBXFileReference; lastKnownFileType = text; path = PP_VertexShader.vertexshader; sourceTree = "<group>"; };
 		8554AC9E26AE7B0A00D1BDC5 /* PP_FragmentShader.fragmentshader */ = {isa = PBXFileReference; lastKnownFileType = text; path = PP_FragmentShader.fragmentshader; sourceTree = "<group>"; };
 		8554AC9F26AE867C00D1BDC5 /* PostProcessor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PostProcessor.cpp; sourceTree = "<group>"; };
@@ -119,7 +120,6 @@
 		85F24124269844DE00B743F4 /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
 		85F2412726984AF600B743F4 /* ResourceManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ResourceManager.cpp; sourceTree = "<group>"; };
 		85F2412826984AF600B743F4 /* ResourceManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ResourceManager.hpp; sourceTree = "<group>"; };
-		85F2412A269869F000B743F4 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stb_image.h; path = ../../stb/stb_image.h; sourceTree = "<group>"; };
 		85F2412B26986BBD00B743F4 /* stb_image.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stb_image.cpp; sourceTree = "<group>"; };
 		85F2412D2699482C00B743F4 /* VertexShader.vertexshader */ = {isa = PBXFileReference; lastKnownFileType = text; path = VertexShader.vertexshader; sourceTree = "<group>"; };
 		85F2412E269948D900B743F4 /* FragmentShader.fragmentshader */ = {isa = PBXFileReference; lastKnownFileType = text; path = FragmentShader.fragmentshader; sourceTree = "<group>"; };
@@ -220,7 +220,7 @@
 				85D58BEA269D8523008DFBD5 /* Save */,
 				85D58BDA269AB3CC008DFBD5 /* Levels */,
 				85D58BC326996FDC008DFBD5 /* Textures */,
-				85F2412A269869F000B743F4 /* stb_image.h */,
+				851CBC3126C135EE00402FAC /* stb_image.h */,
 				85D58BC8269980FE008DFBD5 /* glad.c */,
 				85F2412B26986BBD00B743F4 /* stb_image.cpp */,
 				85F240F82696A4E500B743F4 /* main.cpp */,
